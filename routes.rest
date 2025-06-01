@@ -1,0 +1,32 @@
+// LOCALHOST
+
+### Get all users
+GET http://localhost:3000/users
+
+### Get user by ID (Ariel)
+GET http://localhost:3000/users/6828bd6dc79726c81687eba2
+
+### Create user
+POST http://localhost:3000/users HTTP/1.1
+content-type: application/json
+
+{
+  "email": "moana.ocean@gmail.com",
+  "username": "2voyager_moana",
+  "name": "1Moana",
+  "ipaddress": "172.30.11.21"
+}
+
+### PUT user (Olaf)
+PUT http://localhost:3000/users/6828c09ec79726c81687eba3 HTTP/1.1
+content-type: application/json
+
+{
+ "email": "a123riel123@disney.com",
+    "username": "redfin_ari",
+    "name": "Ariel",
+    "ipaddress": "172.22.14.87"
+}
+
+### DELETE user (Simba)
+DELETE http://localhost:3000/users/6828bd6dc79726c81687eba2
