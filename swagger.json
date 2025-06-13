@@ -181,6 +181,72 @@
           }
         }
       }
+    },
+    "/products/": {
+      "get": {
+        "tags": ["products"],
+        "description": "Get all products",
+        "produces": ["application/json"],
+        "responses": {"200": {"description": "OK"}}
+      },
+      "post": {
+        "tags": ["products"],
+        "description": "Create a new product",
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string", "example": "Sample Product"},
+              "price": {"type": "number", "example": 9.99},
+              "category": {"type": "string", "example": "Sample Category"}
+            },
+            "required": ["name", "price", "category"]
+          }
+        }],
+        "responses": {
+          "201": {"description": "Created"},
+          "400": {"description": "Validation Error"},
+          "500": {"description": "Internal Server Error"}
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "tags": ["products"],
+        "description": "Get a single product",
+        "produces": ["application/json"],
+        "parameters": [{"name": "id", "in": "path", "required": true, "type": "string"}],
+        "responses": {"200": {"description": "OK"}, "404": {"description": "Not Found"}}
+      },
+      "put": {
+        "tags": ["products"],
+        "description": "Update a product",
+        "parameters": [
+          {"name": "id", "in": "path", "required": true, "type": "string"},
+          {"name": "body", "in": "body", "schema": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string", "example": "Sample Product"},
+              "price": {"type": "number", "example": 9.99},
+              "category": {"type": "string", "example": "Sample Category"}
+            },
+            "required": ["name", "price", "category"]
+          }}
+        ],
+        "responses": {
+          "204": {"description": "No Content"},
+          "400": {"description": "Validation Error"},
+          "500": {"description": "Internal Server Error"}
+        }
+      },
+      "delete": {
+        "tags": ["products"],
+        "description": "Delete a product",
+        "parameters": [{"name": "id", "in": "path", "required": true, "type": "string"}],
+        "responses": {"204": {"description": "No Content"}, "500": {"description": "Internal Server Error"}}
+      }
     }
   }
 }
